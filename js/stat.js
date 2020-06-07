@@ -49,4 +49,4 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText(names[i], getX, initialY + indentName);
     ctx.fillText(times[i].toFixed(0), getX, getY - indentTime);
   }
-}
+};
