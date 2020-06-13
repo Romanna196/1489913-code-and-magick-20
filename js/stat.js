@@ -1,5 +1,11 @@
 'use strict';
 
+var CLOUD_WIDTH = 420;
+var CLOUD_HEIGHT = 270;
+var CLOUD_X = 100;
+var CLOUD_Y = 10;
+var COLOR_SHADOW = 'rgba(0, 0, 0, 0.7)';
+var GAP = 10;
 var barWidth = 40;
 var histogramHeight = 150;
 var initialX = 135;
@@ -8,13 +14,14 @@ var indent = 105;
 var indentName = 20;
 var indentTime = 10;
 
-window.renderStatistics = function (ctx, names, times) {
+var renderCloud = function(ctx, x, y, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+};
 
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-  ctx.fillRect(110, 20, 420, 270);
-  ctx.fillStyle = '#fff';
-  ctx.strokeRect(100, 10, 420, 270);
-  ctx.fillRect(100, 10, 420, 270);
+window.renderStatistics = function (ctx, names, times) {
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, COLOR_SHADOW);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, 'white');
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', 250, 30);
